@@ -1,0 +1,29 @@
+# 编译产物
+bin/
+obj/
+artifacts/
+publish/
+release/
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+Thumbs.db
+.DS_Store
+*.log
+
+# 签名密钥和密码，永远不要提交
+*.keystore
+*.jks
+*.password
+*.pfx
+# Windows 版
+dist/
+dist-next/
+installer/MicrosoftEdgeWebview2Setup.exe
+*.lnk
+# MiSans 字体（tools\get-fonts.ps1 下载，许可未明确允许在仓库里再分发）
+src/JableLens.App/Assets/Fonts/

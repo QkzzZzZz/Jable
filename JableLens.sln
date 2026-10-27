@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B101E20-F60C-4E3A-A5C4-B8D616F52398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JableLens.Core", "src\JableLens.Core\JableLens.Core.csproj", "{306BC63A-B826-4241-9740-CC934F1F33AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{8DA2F886-C849-408F-865D-A497C195D990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JableLens.Cli", "tools\JableLens.Cli\JableLens.Cli.csproj", "{A8673492-1926-4EC4-9F40-30394C7B2370}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{86B647A4-C9CB-45F8-94CF-8B6582529BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JableLens.Core.Tests", "tests\JableLens.Core.Tests\JableLens.Core.Tests.csproj", "{5B5EE541-867F-491F-AC1B-F385B6CDA9E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JableLens.App", "src\JableLens.App\JableLens.App.csproj", "{A600D80B-8DEE-40B2-B218-1C0F0DC65C88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{306BC63A-B826-4241-9740-CC934F1F33AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306BC63A-B826-4241-9740-CC934F1F33AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306BC63A-B826-4241-9740-CC934F1F33AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306BC63A-B826-4241-9740-CC934F1F33AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8673492-1926-4EC4-9F40-30394C7B2370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8673492-1926-4EC4-9F40-30394C7B2370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8673492-1926-4EC4-9F40-30394C7B2370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8673492-1926-4EC4-9F40-30394C7B2370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5EE541-867F-491F-AC1B-F385B6CDA9E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5EE541-867F-491F-AC1B-F385B6CDA9E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5EE541-867F-491F-AC1B-F385B6CDA9E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5EE541-867F-491F-AC1B-F385B6CDA9E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A600D80B-8DEE-40B2-B218-1C0F0DC65C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A600D80B-8DEE-40B2-B218-1C0F0DC65C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A600D80B-8DEE-40B2-B218-1C0F0DC65C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A600D80B-8DEE-40B2-B218-1C0F0DC65C88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{306BC63A-B826-4241-9740-CC934F1F33AA} = {1B101E20-F60C-4E3A-A5C4-B8D616F52398}
+		{A8673492-1926-4EC4-9F40-30394C7B2370} = {8DA2F886-C849-408F-865D-A497C195D990}
+		{5B5EE541-867F-491F-AC1B-F385B6CDA9E2} = {86B647A4-C9CB-45F8-94CF-8B6582529BB2}
+		{A600D80B-8DEE-40B2-B218-1C0F0DC65C88} = {1B101E20-F60C-4E3A-A5C4-B8D616F52398}
+	EndGlobalSection
+EndGlobal

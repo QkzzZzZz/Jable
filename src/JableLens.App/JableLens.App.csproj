@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>Jable</AssemblyName>
+    <RootNamespace>JableLens.App</RootNamespace>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <Version>1.0.7</Version>
+    <Product>Jable</Product>
+    <!-- 只带中文的界面资源，安装包小一些 -->
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WinForms 只用来做托盘图标，别让它的类型和 WPF 冲突 -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+    <!-- 站点读取、推荐等和安卓版共用的部分 -->
+    <Using Include="JableLens.Core.Sites" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JableLens.Core\JableLens.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Player\hls.min.js" LogicalName="hls.min.js" />
+    <EmbeddedResource Include="Player\player.js" LogicalName="player.js" />
+    <Resource Include="Assets\app.ico" />
+    <!-- MiSans 字体（tools\get-fonts.ps1 从小米官网下载；不进仓库，没有时界面回落到微软雅黑） -->
+    <Resource Include="Assets\Fonts\*.ttf" />
+  </ItemGroup>
+
+</Project>

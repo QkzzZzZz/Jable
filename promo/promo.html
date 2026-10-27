@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Jable 宣传图（Windows）</title>
+<!-- 渲染：msedge --headless --screenshot --window-size=1920,1080 promo.html#w1 … #w4（见 render.ps1）。
+     封面都是抽象色块，标题和番号是虚构的。字体用项目里的 MiSans（没有时回落到微软雅黑）。 -->
+<style>
+  @font-face { font-family: 'JableUI'; src: url('../src/JableLens.App/Assets/Fonts/MiSans-Regular.ttf'); font-weight: 100 449; }
+  @font-face { font-family: 'JableUI'; src: url('../src/JableLens.App/Assets/Fonts/MiSans-Semibold.ttf'); font-weight: 450 599; }
+  @font-face { font-family: 'JableUI'; src: url('../src/JableLens.App/Assets/Fonts/MiSans-Bold.ttf'); font-weight: 600 749; }
+  @font-face { font-family: 'JableUI'; src: url('../src/JableLens.App/Assets/Fonts/MiSans-Heavy.ttf'); font-weight: 750 1000; }
+  :root {
+    --red: #E50914; --bg: #0b0b0c; --page: #141414; --panel: #181818; --card: #2F2F2F;
+    --fg: #fff; --fg2: #B3B3B3; --fg3: #808080; --link: #54B9C5;
+    --cn: 'JableUI', "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    --brand: Impact, "Arial Black", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); font-family: var(--cn); color: var(--fg); }
+  .scene { display: none; position: relative; width: 1920px; height: 1080px; overflow: hidden;
+    background: radial-gradient(900px 700px at 85% 20%, rgba(229,9,20,.26), transparent 70%),
+                radial-gradient(800px 600px at 10% 100%, rgba(229,9,20,.12), transparent 70%), var(--bg); }
+  .scene.on { display: block; }
+
+  /* 左侧文案 */
+  .copy { position: absolute; left: 120px; top: 50%; transform: translateY(-50%); width: 600px; }
+  .logo { font-family: var(--brand); color: var(--red); font-size: 46px; letter-spacing: .5px; }
+  .logo small { font-family: var(--cn); color: var(--fg2); font-size: 20px; letter-spacing: 0; margin-left: 12px; vertical-align: 8px; font-weight: 500; }
+  .copy h1 { font-size: 76px; line-height: 1.14; font-weight: 800; margin: 34px 0 22px; letter-spacing: -1px; }
+  .copy h1 em { font-style: normal; color: var(--red); }
+  .copy p { font-size: 24px; line-height: 1.6; color: var(--fg2); }
+  .points { margin-top: 44px; display: grid; gap: 18px; }
+  .point { display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 600; }
+  .point i { width: 44px; height: 44px; border-radius: 12px; background: rgba(229,9,20,.15); border: 1px solid rgba(229,9,20,.45);
+    display: grid; place-items: center; font-style: normal; color: var(--red); font-size: 20px; font-weight: 700; flex: none; }
+  .point span { color: var(--fg2); font-size: 18px; margin-left: 4px; font-weight: 400; }
+  .tag { position: absolute; left: 120px; bottom: 70px; color: var(--fg3); font-size: 18px; letter-spacing: 1px; }
+
+  /* 窗口 */
+  .stage { position: absolute; right: 80px; top: 50%; transform: translateY(-50%) perspective(2600px) rotateY(-7deg) rotateX(1.5deg); transform-origin: right center; }
+  .win { width: 1080px; height: 700px; border-radius: 16px; background: var(--page); overflow: hidden; position: relative;
+    border: 1px solid rgba(255,255,255,.1); box-shadow: 0 60px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(0,0,0,.6); }
+
+  /* 顶部玻璃导航（和软件一致：一条胶囊，左标志 + 栏目，右图标 + 窗口按钮） */
+  .nav { position: absolute; top: 10px; left: 10px; right: 10px; height: 42px; z-index: 6; display: flex; align-items: center; gap: 4px;
+    padding: 0 12px 0 16px; border-radius: 999px; background: rgba(28,28,30,.55); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.14); font-size: 12.5px; }
+  .nav b { font-family: var(--brand); color: var(--red); font-size: 20px; font-weight: normal; margin-right: 12px; }
+  .nav span { color: #dcdcdc; padding: 5px 10px; border-radius: 999px; }
+  .nav span.on { background: rgba(255,255,255,.14); color: #fff; font-weight: 600; }
+  .nav .sp { flex: 1; }
+  .nav .ic { color: #ddd; font-size: 14px; padding: 0 7px; }
+  .nav .av { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(160deg, #ff3b46, #b0060f); margin: 0 10px 0 6px; }
+  .nav .wb { color: #bbb; font-size: 12px; padding: 0 7px; }
+  .vsep { width: 1px; height: 16px; background: rgba(255,255,255,.2); margin: 0 4px; }
+
+  /* 抽象占位封面 */
+  .cv, .bg, .ph { background:
+      radial-gradient(circle at var(--x, 30%) var(--y, 35%), var(--a), transparent 55%),
+      radial-gradient(circle at 75% 75%, var(--b), transparent 55%),
+      linear-gradient(135deg, var(--c), #101012); }
+  .p1 { --a: #ff7a59; --b: #7b2ff7; --c: #3a1020; }
+  .p2 { --a: #ffd36e; --b: #ff4d6d; --c: #40210f; --x: 70%; }
+  .p3 { --a: #5ee7df; --b: #3d5afe; --c: #0e2a3a; }
+  .p4 { --a: #f78fb3; --b: #c44569; --c: #3b1530; --y: 60%; }
+  .p5 { --a: #a1ffce; --b: #13a89e; --c: #0f2f2a; --x: 60%; }
+  .p6 { --a: #fbc2eb; --b: #a18cd1; --c: #2a1d3d; }
+  .p7 { --a: #ff9a8b; --b: #ff6a88; --c: #3b1414; --x: 65%; --y: 25%; }
+  .p8 { --a: #89f7fe; --b: #66a6ff; --c: #102033; --x: 25%; --y: 70%; }
+
+  /* 卡片：圆角 12 + 淡白细边，标题 + 灰色一行 */
+  .cards { display: flex; gap: 12px; }
+  .c { width: 186px; flex: none; }
+  .c .cv { height: 105px; border-radius: 12px; position: relative; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.13); }
+  .c .t { font-size: 13px; color: #e5e5e5; margin-top: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .c .m { font-size: 11.5px; color: var(--fg3); margin-top: 3px; }
+  .bar { position: absolute; left: 12px; right: 12px; bottom: 9px; height: 3px; background: rgba(128,128,128,.6); }
+  .bar b { display: block; height: 100%; background: var(--red); }
+  .top { position: absolute; left: 0; top: 0; background: var(--red); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 12px 0 10px 0; }
+
+  /* ① 首页：铺满的大图 */
+  .bill { position: relative; height: 470px; }
+  .bill .bg { position: absolute; inset: 0; }
+  .bill .shade { position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 40%, transparent 72%),
+                linear-gradient(0deg, var(--page) 0%, rgba(20,20,20,.5) 18%, transparent 40%),
+                linear-gradient(180deg, rgba(0,0,0,.55) 0%, transparent 22%); }
+  .bill .txt { position: absolute; left: 40px; bottom: 74px; }
+  .rank { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
+  .rank i { background: var(--red); border-radius: 3px; font-style: normal; font-size: 8px; line-height: .95; padding: 3px 5px; text-align: center; font-weight: 800; }
+  .code { font-family: var(--brand); font-size: 74px; margin: 6px 0 2px; letter-spacing: .5px; }
+  .meta { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+  .meta em { font-style: normal; border: 1px solid rgba(255,255,255,.7); border-radius: 4px; padding: 0 5px; font-size: 11px; }
+  .sub { color: #eee; font-size: 14px; max-width: 440px; margin-top: 8px; }
+  .btns { display: flex; gap: 10px; margin-top: 16px; }
+  .btn { padding: 8px 24px; border-radius: 999px; font-size: 14.5px; font-weight: 700; background: #fff; color: #000; }
+  .btn.ghost { background: rgba(120,120,120,.55); color: #fff; backdrop-filter: blur(10px); }
+  .row { padding: 0 40px; position: relative; z-index: 2; }
+  .row h3 { font-size: 17px; margin: 0 0 11px; font-weight: 700; color: #e5e5e5; }
+  #w1 .row { margin-top: -54px; }
+
+  /* ② 网格 + 悬停卡 + 视差倾斜 */
+  .page { padding: 74px 40px 0; }
+  .ptitle { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; }
+  .ptitle h2 { font-size: 28px; font-weight: 800; }
+  .ptitle span { color: var(--fg2); font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px 12px; }
+  .grid .c { width: auto; }
+  .grid .c .cv { height: 110px; }
+  .tilt { transform: perspective(700px) rotateY(-9deg) rotateX(5deg) scale(1.05); box-shadow: 0 18px 34px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.18) !important; }
+  .tilt::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 25%, rgba(255,255,255,.32), transparent 55%); }
+  .bob { position: absolute; left: 448px; top: 150px; width: 380px; border-radius: 18px; overflow: hidden; z-index: 5;
+    background: rgba(26,26,28,.86); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,.14); box-shadow: 0 30px 60px rgba(0,0,0,.65); }
+  .bob .ph { height: 214px; position: relative; }
+  .bob .ph .shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(24,24,24,1) 0%, transparent 55%); }
+  .bob .ph b { position: absolute; left: 18px; bottom: 8px; font-family: var(--brand); font-size: 30px; font-weight: normal; }
+  .bob .body { padding: 6px 20px 18px; }
+  .rbtns { display: flex; align-items: center; gap: 8px; }
+  .rbtns .pl { background: #fff; color: #000; border-radius: 999px; padding: 6px 20px; font-size: 13px; font-weight: 700; }
+  .rbtns .ro { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.6); display: grid; place-items: center; font-size: 15px; }
+  .rbtns .sp { flex: 1; }
+  .bob .info { margin-top: 12px; font-size: 13px; display: flex; gap: 10px; align-items: center; }
+  .bob .info .d { color: #46d369; font-weight: 700; }
+  .bob .info em { font-style: normal; border: 1px solid rgba(255,255,255,.5); border-radius: 3px; padding: 0 4px; font-size: 10.5px; }
+  .bob h5 { font-size: 14.5px; margin-top: 8px; line-height: 1.45; }
+  .kv { display: grid; grid-template-columns: 40px 1fr; gap: 6px 10px; margin-top: 10px; font-size: 12px; }
+  .kv span:nth-child(odd) { color: #8c8c8c; } .kv span:nth-child(even) { color: #d9d9d9; }
+
+  /* ③ 黄果短剧 */
+  .bar2 { position: absolute; top: 62px; left: 40px; right: 40px; display: flex; align-items: center; gap: 10px; z-index: 3; }
+  .bar2 h4 { font-size: 16px; font-weight: 700; margin-right: 8px; }
+  .pill { padding: 5px 13px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 12.5px; }
+  .pill.on { background: #fff; color: #000; font-weight: 600; }
+  .bar2 .sp { flex: 1; }
+  .search { width: 170px; height: 28px; border-radius: 999px; background: rgba(255,255,255,.1); }
+  .bb { padding: 5px 13px; border-radius: 999px; background: rgba(255,255,255,.1); font-size: 12px; font-weight: 600; }
+  .drama { position: absolute; top: 112px; left: 40px; right: 40px; }
+  .drama h3 { font-size: 22px; font-weight: 800; margin: 6px 0 12px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .dgrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 22px 12px; }
+  .dc .cv { height: 190px; border-radius: 12px; position: relative; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.13); }
+  .dc .cv .new { position: absolute; left: 8px; top: 8px; background: var(--red); border-radius: 4px; font-size: 10px; font-weight: 700; padding: 1px 6px; }
+  .dc .cv .sc { position: absolute; right: 8px; top: 8px; background: rgba(0,0,0,.6); border-radius: 4px; font-size: 10.5px; font-weight: 700; padding: 1px 6px; }
+  .dc .cv .ep { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 6px; font-size: 10.5px; background: linear-gradient(transparent, rgba(0,0,0,.75)); text-align: right; }
+  .dc .t { font-size: 12.5px; color: #e5e5e5; margin-top: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dc .g { font-size: 11px; color: var(--fg3); margin-top: 3px; }
+
+  /* ④ 播放器 */
+  .player { position: absolute; inset: 0; }
+  .player .ph { position: absolute; inset: 0; filter: saturate(1.1); }
+  .player .veil { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.85), transparent 35%, transparent 75%, rgba(0,0,0,.6)); }
+  .pt { position: absolute; left: 32px; top: 24px; font-size: 18px; font-weight: 700; }
+  .pt span { color: var(--fg2); font-weight: 400; margin-left: 10px; font-size: 15px; }
+  .ctrl { position: absolute; left: 32px; right: 32px; bottom: 26px; }
+  .prog { height: 5px; border-radius: 3px; background: rgba(255,255,255,.25); position: relative; }
+  .prog .buf { position: absolute; left: 0; top: 0; bottom: 0; width: 64%; background: rgba(255,255,255,.4); border-radius: 3px; }
+  .prog .cur { position: absolute; left: 0; top: 0; bottom: 0; width: 48%; background: var(--red); border-radius: 3px; }
+  .prog .knob { position: absolute; left: 48%; top: 50%; width: 16px; height: 16px; border-radius: 50%; background: var(--red); transform: translate(-50%, -50%); }
+  .crow { display: flex; align-items: center; gap: 22px; margin-top: 16px; font-size: 15px; }
+  .crow .pp { font-size: 26px; } .crow .sp { flex: 1; } .crow .mut { color: var(--fg2); }
+  .subt { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; font-size: 24px; text-shadow: 0 2px 6px #000; }
+  .dl { position: absolute; right: 26px; top: 70px; width: 360px; background: rgba(24,24,26,.8); backdrop-filter: blur(22px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 16px; }
+  .dl h4 { font-size: 15px; margin-bottom: 12px; }
+  .di { display: grid; grid-template-columns: 74px 1fr; gap: 12px; margin-bottom: 12px; align-items: center; }
+  .di .ph { height: 42px; border-radius: 8px; }
+  .di b { font-size: 13px; font-weight: 600; display: block; }
+  .di .tr { height: 4px; border-radius: 2px; background: #333; margin: 6px 0 4px; }
+  .di .tr i { display: block; height: 100%; border-radius: 2px; background: var(--red); }
+  .di span { font-size: 12px; color: var(--fg3); }
+</style>
+</head>
+<body>
+
+<!-- ① 首页 -->
+<section class="scene" id="w1">
+  <div class="copy">
+    <div class="logo">JABLE<small>Windows 版</small></div>
+    <h1>像看大片<br><em>一样选片</em></h1>
+    <p>铺满整屏的大图、自动播放的预告，<br>一行行横着翻。没有广告，没有弹窗。</p>
+    <div class="points">
+      <div class="point"><i>▶</i>秒开播放<span>进度自动记住</span></div>
+      <div class="point"><i>★</i>片单 · 关注演员<span>新作自动提醒</span></div>
+      <div class="point"><i>⇩</i>离线下载<span>保存到本地慢慢看</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="win">
+      <div class="nav"><b>JABLE</b><span class="on">首页</span><span>标签</span><span>分类</span><span>演员</span><span>封面墙</span><span>黄果短剧</span><span>我的片单</span><i class="sp"></i><span class="ic">⌕</span><span class="ic">⇩</span><span class="ic">🔔︎</span><div class="av"></div><div class="vsep"></div><span class="wb">—</span><span class="wb">☐</span><span class="wb">✕</span></div>
+      <div class="bill">
+        <div class="bg p7" style="--x:72%;--y:42%"></div>
+        <div class="shade"></div>
+        <div class="txt">
+          <div class="rank"><i>TOP<br>10</i>本周热门第 1 名</div>
+          <div class="code">JBL-001</div>
+          <div class="meta">1:58:19<em>HD</em><em>18+</em></div>
+          <div class="sub">停两秒就开始静音播放预告，播完自动换下一部</div>
+          <div class="btns"><div class="btn">▶ 播放</div><div class="btn ghost">ⓘ 更多信息</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <h3>继续观看</h3>
+        <div class="cards">
+          <div class="c"><div class="cv p1"><div class="bar"><b style="width:62%"></b></div></div><div class="t">城市夜色 特别篇</div><div class="m">JBL-104  ·  1:58:32</div></div>
+          <div class="c"><div class="cv p3"><div class="bar"><b style="width:28%"></b></div></div><div class="t">海边假日</div><div class="m">JBL-087  ·  2:04:14</div></div>
+          <div class="c"><div class="cv p4"><div class="bar"><b style="width:85%"></b></div></div><div class="t">雨天咖啡馆</div><div class="m">JBL-066  ·  2:21:58</div></div>
+          <div class="c"><div class="cv p5"><div class="bar"><b style="width:40%"></b></div></div><div class="t">午后时光</div><div class="m">JBL-052  ·  1:49:00</div></div>
+          <div class="c"><div class="cv p6"><div class="bar"><b style="width:15%"></b></div></div><div class="t">旅行日记</div><div class="m">JBL-031  ·  2:07:43</div></div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:22px">
+        <h3>本周热门 TOP 10</h3>
+        <div class="cards">
+          <div class="c"><div class="cv p2"><div class="top">TOP 1</div></div></div>
+          <div class="c"><div class="cv p8"><div class="top">TOP 2</div></div></div>
+          <div class="c"><div class="cv p4"><div class="top">TOP 3</div></div></div>
+          <div class="c"><div class="cv p5"><div class="top">TOP 4</div></div></div>
+          <div class="c"><div class="cv p1"><div class="top">TOP 5</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tag">原生 Windows 应用 · 账号与观看记录只保存在本机</div>
+</section>
+
+<!-- ② 悬停卡 + 视差倾斜 -->
+<section class="scene" id="w2">
+  <div class="copy">
+    <div class="logo">JABLE<small>Windows 版</small></div>
+    <h1>停一下<br><em>就知道好不好看</em></h1>
+    <p>鼠标停在卡片上，卡片轻轻倾斜、亮起高光，<br>随即弹出预告、演员、标签和简介。</p>
+    <div class="points">
+      <div class="point"><i>◩</i>悬停预览<span>预告短片静音自动播放</span></div>
+      <div class="point"><i>⤢</i>卡片展开<span>点开时从卡片长成详情页</span></div>
+      <div class="point"><i>✦</i>视差倾斜<span>跟着鼠标走的高光</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="win">
+      <div class="nav"><b>JABLE</b><span>首页</span><span>标签</span><span>分类</span><span>演员</span><span class="on">封面墙</span><span>黄果短剧</span><span>我的片单</span><i class="sp"></i><span class="ic">⌕</span><span class="ic">⇩</span><span class="ic">🔔︎</span><div class="av"></div><div class="vsep"></div><span class="wb">—</span><span class="wb">☐</span><span class="wb">✕</span></div>
+      <div class="page">
+        <div class="ptitle"><h2>最近更新</h2><span>按上架时间 ⌄</span></div>
+        <div class="grid">
+          <div class="c"><div class="cv p3"></div><div class="t">海边假日</div><div class="m">JBL-087  ·  2:04:14</div></div>
+          <div class="c"><div class="cv p6"></div><div class="t">星空下的约定</div><div class="m">JBL-112  ·  1:52:40</div></div>
+          <div class="c"><div class="cv p2 tilt"></div><div class="t">初夏物语</div><div class="m">JBL-118  ·  2:10:05</div></div>
+          <div class="c"><div class="cv p5"></div><div class="t">午后时光</div><div class="m">JBL-052  ·  1:49:00</div></div>
+          <div class="c"><div class="cv p8"></div><div class="t">雪国列车</div><div class="m">JBL-095  ·  2:02:31</div></div>
+          <div class="c"><div class="cv p1"></div><div class="t">城市夜色 特别篇</div><div class="m">JBL-104  ·  1:58:32</div></div>
+          <div class="c"><div class="cv p4"></div><div class="t">雨天咖啡馆</div><div class="m">JBL-066  ·  2:21:58</div></div>
+          <div class="c"><div class="cv p7"></div><div class="t">周末的画室</div><div class="m">JBL-074  ·  1:46:12</div></div>
+          <div class="c"><div class="cv p6"></div><div class="t">旅行日记</div><div class="m">JBL-031  ·  2:07:43</div></div>
+          <div class="c"><div class="cv p3"></div><div class="t">温泉旅馆 2</div><div class="m">JBL-058  ·  2:15:20</div></div>
+          <div class="c"><div class="cv p5"></div><div class="t">山间小屋</div><div class="m">JBL-041  ·  1:55:09</div></div>
+          <div class="c"><div class="cv p2"></div><div class="t">夏日祭</div><div class="m">JBL-029  ·  2:01:47</div></div>
+          <div class="c"><div class="cv p8"></div><div class="t">深夜食堂</div><div class="m">JBL-017  ·  1:59:33</div></div>
+          <div class="c"><div class="cv p4"></div><div class="t">晚风</div><div class="m">JBL-012  ·  2:06:18</div></div>
+          <div class="c"><div class="cv p1"></div><div class="t">归途</div><div class="m">JBL-008  ·  1:50:55</div></div>
+        </div>
+      </div>
+      <div class="bob">
+        <div class="ph p2" style="--x:62%"><div class="shade"></div><b>JBL-118</b></div>
+        <div class="body">
+          <div class="rbtns"><span class="pl">▶ 播放</span><span class="ro">＋</span><i class="sp"></i><span class="ro">⌄</span></div>
+          <div class="info"><span class="d">2026-10-24 上市</span><span>2:10:05</span><em>HD</em></div>
+          <h5>初夏物语：海边小镇的一个夏天</h5>
+          <div class="kv"><span>类型</span><span>剧情 · 中文字幕</span><span>演员</span><span>示例演员</span><span>标签</span><span>夏日 · 校外旅行 · 长篇</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tag">只改渲染、不触发排版：动画顺滑不掉帧</div>
+</section>
+
+<!-- ③ 黄果短剧 -->
+<section class="scene" id="w3">
+  <div class="copy">
+    <div class="logo">JABLE<small>Windows 版</small></div>
+    <h1>AI 短剧<br><em>一样干净</em></h1>
+    <p>内置黄果短剧：去掉网站的广告、弹窗和推广，<br>栏目、卡片、配色、字体统一成 Jable 风格。</p>
+    <div class="points">
+      <div class="point"><i>⊘</i>没有广告<span>广告位和推广脚本直接拦截</span></div>
+      <div class="point"><i>☰</i>栏目一排排开<span>首页 · 短剧 · 漫剧 · 专题 · 排行</span></div>
+      <div class="point"><i>⛨</i>独立的浏览器环境<span>cookie 和片库分开</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="win">
+      <div class="nav"><b>JABLE</b><span>首页</span><span>标签</span><span>分类</span><span>演员</span><span>封面墙</span><span class="on">黄果短剧</span><span>我的片单</span><i class="sp"></i><span class="ic">⌕</span><span class="ic">⇩</span><span class="ic">🔔︎</span><div class="av"></div><div class="vsep"></div><span class="wb">—</span><span class="wb">☐</span><span class="wb">✕</span></div>
+      <div class="bar2"><h4>黄果短剧</h4><span class="pill">首页</span><span class="pill on">AI成人短剧</span><span class="pill">AI成人漫剧</span><span class="pill">专题</span><span class="pill">排行榜</span><i class="sp"></i><span class="search"></span><span class="bb">后退</span><span class="bb">刷新</span></div>
+      <div class="drama">
+        <h3>AI 短剧在线观看</h3>
+        <div class="tabs"><span class="pill on">最新更新</span><span class="pill">当前热播</span><span class="pill">独家原创</span><span class="pill">随机推荐</span></div>
+        <div class="dgrid">
+          <div class="dc"><div class="cv p7"><span class="new">新上架</span><span class="sc">9.1分</span><span class="ep">更新至14集</span></div><div class="t">星河之约</div><div class="g">都市 · 逆袭</div></div>
+          <div class="dc"><div class="cv p3"><span class="sc">8.6分</span><span class="ep">更新至3集</span></div><div class="t">云端旅馆</div><div class="g">奇幻 · 系统</div></div>
+          <div class="dc"><div class="cv p6"><span class="new">原创</span><span class="sc">9.2分</span><span class="ep">更新至5集</span></div><div class="t">月光剧场</div><div class="g">古风 · 仙侠</div></div>
+          <div class="dc"><div class="cv p2"><span class="sc">7.9分</span><span class="ep">更新至4集</span></div><div class="t">午夜电台</div><div class="g">现代 · 职场</div></div>
+          <div class="dc"><div class="cv p5"><span class="new">新上架</span><span class="sc">8.8分</span><span class="ep">全13集</span></div><div class="t">时间旅人</div><div class="g">奇幻 · 穿越</div></div>
+          <div class="dc"><div class="cv p8"><span class="sc">8.1分</span><span class="ep">更新至2集</span></div><div class="t">雪夜来客</div><div class="g">悬疑 · 都市</div></div>
+          <div class="dc"><div class="cv p4"><span class="sc">9.0分</span><span class="ep">更新至9集</span></div><div class="t">玫瑰庄园</div><div class="g">现代 · 豪门</div></div>
+          <div class="dc"><div class="cv p1" style="--x:40%"><span class="sc">8.4分</span><span class="ep">更新至6集</span></div><div class="t">海港往事</div><div class="g">都市 · 剧情</div></div>
+          <div class="dc"><div class="cv p8" style="--x:70%"><span class="new">新上架</span><span class="sc">9.3分</span><span class="ep">更新至2集</span></div><div class="t">极光之下</div><div class="g">奇幻 · 冒险</div></div>
+          <div class="dc"><div class="cv p4" style="--x:30%"><span class="sc">8.0分</span><span class="ep">全20集</span></div><div class="t">长安夜话</div><div class="g">古风 · 宫廷</div></div>
+          <div class="dc"><div class="cv p5" style="--y:20%"><span class="sc">8.7分</span><span class="ep">更新至11集</span></div><div class="t">第七号房间</div><div class="g">悬疑 · 系统</div></div>
+          <div class="dc"><div class="cv p2" style="--x:30%"><span class="new">原创</span><span class="sc">9.1分</span><span class="ep">更新至7集</span></div><div class="t">夏夜烟火</div><div class="g">现代 · 都市</div></div>
+          <div class="dc"><div class="cv p6" style="--y:70%"><span class="sc">7.8分</span><span class="ep">更新至4集</span></div><div class="t">镜中人</div><div class="g">奇幻 · 悬疑</div></div>
+          <div class="dc"><div class="cv p3" style="--x:65%"><span class="sc">8.9分</span><span class="ep">全16集</span></div><div class="t">归海</div><div class="g">现代 · 逆袭</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tag">封面和标题为示意 · 涉及未成年人和真人换脸的作品不显示</div>
+</section>
+
+<!-- ④ 播放与下载 -->
+<section class="scene" id="w4">
+  <div class="copy">
+    <div class="logo">JABLE<small>Windows 版</small></div>
+    <h1>点开就播<br><em>想存就存</em></h1>
+    <p>直接播放原站视频，画质与原站一致。<br>喜欢的作品一键下载，没网也能看。</p>
+    <div class="points">
+      <div class="point"><i>⚡</i>秒开播放<span>记住进度，下次接着看</span></div>
+      <div class="point"><i>字</i>中文字幕<span>可叠加外挂字幕</span></div>
+      <div class="point"><i>⇩</i>离线下载<span>后台下载，存到本地</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="win">
+      <div class="player">
+        <div class="ph p8" style="--x:60%;--y:40%"></div>
+        <div class="veil"></div>
+        <div class="pt">JBL-087<span>海边假日</span></div>
+        <div class="subt">「今天的海，比昨天更蓝一点。」</div>
+        <div class="ctrl">
+          <div class="prog"><div class="buf"></div><div class="cur"></div><div class="knob"></div></div>
+          <div class="crow"><span class="pp">❚❚</span><span>⟲ 10</span><span>10 ⟳</span><span class="mut">1:00:12 / 2:04:14</span><span class="sp"></span><span>字幕</span><span>1.0×</span><span>⛶</span></div>
+        </div>
+      </div>
+      <div class="dl">
+        <h4>下载</h4>
+        <div class="di"><div class="ph p1"></div><div><b>城市夜色 特别篇</b><div class="tr"><i style="width:72%"></i></div><span>72% · 1.2 GB / 1.7 GB</span></div></div>
+        <div class="di"><div class="ph p5"></div><div><b>午后时光</b><div class="tr"><i style="width:18%"></i></div><span>排队中</span></div></div>
+        <div class="di"><div class="ph p6"></div><div><b>旅行日记</b><div class="tr"><i style="width:100%"></i></div><span>已完成 · 2.1 GB</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="tag">只访问白名单站点 · 不绕过任何网站验证</div>
+</section>
+
+<script>
+  const id = (location.hash || '#w1').slice(1);
+  (document.getElementById(id) || document.querySelector('.scene')).classList.add('on');
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="JableLens.Core.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="1.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 简繁对照表（逐字），各平台共用 -->
+    <EmbeddedResource Include="Text\zh-t2s.txt" LogicalName="JableLens.Core.Text.zh-t2s.txt" />
+    <EmbeddedResource Include="Text\zh-s2t.txt" LogicalName="JableLens.Core.Text.zh-s2t.txt" />
+  </ItemGroup>
+
+</Project>
